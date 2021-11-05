@@ -26,7 +26,7 @@ public class DocumentRepositoryTest {
         assertEquals(actual, type);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void testDeleteEntity() throws CustomException {
         boolean actual = repository.deleteEntity(toDelete);
 
@@ -53,7 +53,12 @@ public class DocumentRepositoryTest {
         assertTrue(actual);
     }
 
-    @Test
+    @Test(priority = 3)
     public void testUpdate() throws CustomException {
+        toDelete.setStatus(true);
+        toDelete.setEvent("уволить всех!");
+        boolean actual = repository.updateEntity(toDelete);
+
+        assertTrue(actual);
     }
 }

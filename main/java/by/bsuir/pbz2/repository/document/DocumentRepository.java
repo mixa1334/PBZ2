@@ -77,6 +77,7 @@ public class DocumentRepository extends AbstractRepository<Document> {
     public boolean deleteEntity(Document document) throws CustomException {
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_DELETE_DOCUMENT_BY_ID)) {
+            logger.log(Level.INFO, "document to delete -> " + document);
             statement.setInt(1, document.getDocumentId());
             int result = statement.executeUpdate();
             logger.log(Level.INFO, "status after deleting -> " + result);
@@ -123,8 +124,9 @@ public class DocumentRepository extends AbstractRepository<Document> {
             statement.setInt(5, document.getPerformer().getPerformerId());
             statement.setDate(6, Date.valueOf(document.getDateOfCompletion()));
             statement.setBoolean(7, document.getStatus());
+            statement.setInt(8, document.getDocumentId());
             int result = statement.executeUpdate();
-            logger.log(Level.INFO, "status after inserting -> " + result);
+            logger.log(Level.INFO, "status after updating -> " + result);
             return result > 0;
         } catch (SQLException throwables) {
             String message = "cant execute query -> " + SQL_UPDATE_DOCUMENT;
