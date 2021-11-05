@@ -22,5 +22,5 @@ public abstract class AbstractRepository<T extends AbstractEntity> {
 
     public abstract boolean createEntity(T t) throws CustomException;
 
-    public abstract T updateEntity(T t) throws CustomException;
+    public abstract boolean updateEntity(T t) throws CustomException;
 }

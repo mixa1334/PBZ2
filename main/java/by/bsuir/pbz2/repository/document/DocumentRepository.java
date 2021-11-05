@@ -22,7 +22,10 @@ public class DocumentRepository extends AbstractRepository<Document> {
             , SQLEntityColumn.PERFORMER, SQLEntityColumn.PERFORMER_ID);
     private final static String SQL_DELETE_DOCUMENT_BY_ID = String.format("DELETE FROM documents WHERE %s = ?"
             , SQLEntityColumn.DOCUMENT_ID);
-    private final static String SQL_INSERT_DOCUMENT = "INSERT INTO documents VALUES (?,?,?,?,?,?,?)";
+    private final static String SQL_INSERT_DOCUMENT = "INSERT INTO documents VALUES (?,?,?,?,?,?,?,?)";
+    private final static String SQL_UPDATE_DOCUMENT = String.format("UPDATE documents SET %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?"
+            , SQLEntityColumn.TYPE, SQLEntityColumn.DATE_OF_CREATION, SQLEntityColumn.CONTENT, SQLEntityColumn.EVENT
+            , SQLEntityColumn.PERFORMER, SQLEntityColumn.DATE_OF_COMPLETION, SQLEntityColumn.STATUS, SQLEntityColumn.DOCUMENT_ID);
 
     private DocumentRepository() {
     }
@@ -33,7 +36,7 @@ public class DocumentRepository extends AbstractRepository<Document> {
 
     @Override
     public List<Document> findEntity(RepositorySpecification specification) throws CustomException {
-        String query = SQL_ALL_DOCUMENTS + specification.getSQLClauses();
+        String query = SQL_ALL_DOCUMENTS + " " + specification.getSQLClauses();
         ArrayList<Document> documents = new ArrayList<>();
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement()) {
@@ -57,6 +60,8 @@ public class DocumentRepository extends AbstractRepository<Document> {
                 performer.setFio(resultSet.getString(SQLEntityColumn.FIO.toString()));
                 document.setPerformer(performer);
 
+                logger.log(Level.INFO, "document from db -> " + document);
+
                 documents.add(document);
             }
         } catch (SQLException throwables) {
@@ -64,6 +69,7 @@ public class DocumentRepository extends AbstractRepository<Document> {
             logger.log(Level.ERROR, message);
             throw new CustomException(message, throwables);
         }
+        logger.log(Level.INFO, "documents find -> " + documents.size());
         return documents;
     }
 
@@ -87,13 +93,14 @@ public class DocumentRepository extends AbstractRepository<Document> {
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_INSERT_DOCUMENT)) {
             logger.log(Level.INFO, "document to create -> " + document);
-            statement.setString(1, document.getTypeOfDocument());
-            statement.setDate(2, Date.valueOf(document.getDateOfCreation()));
-            statement.setString(3, document.getContent());
-            statement.setString(4, document.getEvent());
-            statement.setInt(5, document.getPerformer().getPerformerId());
-            statement.setDate(6, Date.valueOf(document.getDateOfCompletion()));
-            statement.setBoolean(7, document.getStatus());
+            statement.setInt(1, document.getDocumentId());
+            statement.setString(2, document.getTypeOfDocument());
+            statement.setDate(3, Date.valueOf(document.getDateOfCreation()));
+            statement.setString(4, document.getContent());
+            statement.setString(5, document.getEvent());
+            statement.setInt(6, document.getPerformer().getPerformerId());
+            statement.setDate(7, Date.valueOf(document.getDateOfCompletion()));
+            statement.setBoolean(8, document.getStatus());
             int result = statement.executeUpdate();
             logger.log(Level.INFO, "status after inserting -> " + result);
             return result > 0;
@@ -105,7 +112,24 @@ public class DocumentRepository extends AbstractRepository<Document> {
     }
 
     @Override
-    public Document updateEntity(Document document) throws CustomException {
-        return null;
+    public boolean updateEntity(Document document) throws CustomException {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_DOCUMENT)) {
+            logger.log(Level.INFO, "document to update -> " + document);
+            statement.setString(1, document.getTypeOfDocument());
+            statement.setDate(2, Date.valueOf(document.getDateOfCreation()));
+            statement.setString(3, document.getContent());
+            statement.setString(4, document.getEvent());
+            statement.setInt(5, document.getPerformer().getPerformerId());
+            statement.setDate(6, Date.valueOf(document.getDateOfCompletion()));
+            statement.setBoolean(7, document.getStatus());
+            int result = statement.executeUpdate();
+            logger.log(Level.INFO, "status after inserting -> " + result);
+            return result > 0;
+        } catch (SQLException throwables) {
+            String message = "cant execute query -> " + SQL_UPDATE_DOCUMENT;
+            logger.log(Level.ERROR, message);
+            throw new CustomException(message, throwables);
+        }
     }
 }

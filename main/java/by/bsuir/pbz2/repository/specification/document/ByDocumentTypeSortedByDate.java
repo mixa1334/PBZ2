@@ -20,6 +20,6 @@ public class ByDocumentTypeSortedByDate implements RepositorySpecification {
 
     @Override
     public String getSQLClauses() {
-        return String.format("WHERE type LIKE %s ORDER BY %s", typeOfDocument, SQLEntityColumn.DATE_OF_CREATION);
+        return String.format("WHERE type LIKE \"%s\" ORDER BY %s", typeOfDocument, SQLEntityColumn.DATE_OF_CREATION);
     }
 }
