@@ -1,6 +1,4 @@
-package laba2Package.Views;
-
-import laba2Package.Models.Student;
+package by.bsuir.pbz2.view.pageviewer;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

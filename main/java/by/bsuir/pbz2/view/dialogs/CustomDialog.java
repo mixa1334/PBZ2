@@ -1,4 +1,4 @@
-package laba2Package.Views.CustomDialogs;
+package by.bsuir.pbz2.view.dialogs;
 
 import javax.swing.*;
 import java.awt.*;

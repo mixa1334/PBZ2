@@ -1,5 +1,6 @@
-package laba2Package.Views;
+package by.bsuir.pbz2.view;
 
+import by.bsuir.pbz2.view.buttons.MyButton;
 import laba2Package.Views.CustomDialogs.AddStudentDialog;
 import laba2Package.Views.CustomDialogs.DeleteStudentsDialog;
 import laba2Package.Views.CustomDialogs.SearchStudentsDialog;
@@ -9,7 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.nio.file.Paths;
 
-public class View {
+public class DocumentView {
     private final JFrame MainFrame;
 
     private JButton saveJButton;
@@ -24,7 +25,7 @@ public class View {
 
     private final ViewerOfPages viewerOfPages;
 
-    public View() {
+    public DocumentView() {
         MainFrame = new JFrame("PBZ2");
         MainFrame.setLayout(new BorderLayout(5, 5));
         MainFrame.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 600,

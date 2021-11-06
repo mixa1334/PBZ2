@@ -1,11 +1,6 @@
-package laba2Package.Views.CustomDialogs;
-
-import laba2Package.Models.Student;
-import laba2Package.Views.MyButton;
-import laba2Package.Views.ViewerOfPages;
+package by.bsuir.pbz2.view.dialogs;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.nio.file.Paths;

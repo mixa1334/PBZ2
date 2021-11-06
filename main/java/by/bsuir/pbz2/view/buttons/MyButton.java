@@ -1,4 +1,4 @@
-package laba2Package.Views;
+package by.bsuir.pbz2.view.buttons;
 
 import javax.swing.*;
 import java.awt.*;
