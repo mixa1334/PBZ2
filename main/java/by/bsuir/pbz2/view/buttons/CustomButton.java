@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-public class MyButton extends JButton {
-    public MyButton(File pathToFile) {
+public class CustomButton extends JButton {
+    public CustomButton(File pathToFile) {
         this();
         setIcon(new ImageIcon(pathToFile.getAbsolutePath()));
         setContentAreaFilled(false);
@@ -20,12 +20,12 @@ public class MyButton extends JButton {
         });
     }
 
-    public MyButton(String text) {
+    public CustomButton(String text) {
         this();
         setText(text);
     }
 
-    public MyButton() {
+    public CustomButton() {
         setBorderPainted(false);
         setFocusable(false);
         setBackground(Color.LIGHT_GRAY);

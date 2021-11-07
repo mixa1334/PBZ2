@@ -1,16 +1,18 @@
 package by.bsuir.pbz2.view;
 
-import by.bsuir.pbz2.view.buttons.MyButton;
-import laba2Package.Views.CustomDialogs.AddStudentDialog;
-import laba2Package.Views.CustomDialogs.DeleteStudentsDialog;
-import laba2Package.Views.CustomDialogs.SearchStudentsDialog;
+import by.bsuir.pbz2.view.buttons.CustomButton;
+import by.bsuir.pbz2.view.dialogs.AddStudentDialog;
+import by.bsuir.pbz2.view.dialogs.CustomDialog;
+import by.bsuir.pbz2.view.dialogs.DeleteStudentsDialog;
+import by.bsuir.pbz2.view.dialogs.SearchStudentsDialog;
+import by.bsuir.pbz2.view.pageviewer.ViewerOfPages;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.nio.file.Paths;
 
-public class DocumentView {
+public class PerformerDialog extends CustomDialog {
     private final JFrame MainFrame;
 
     private JButton saveJButton;
@@ -22,16 +24,17 @@ public class DocumentView {
     private final AddStudentDialog addStudentDialog;
     private final DeleteStudentsDialog deleteStudentsDialog;
     private final SearchStudentsDialog searchStudentsDialog;
-
     private final ViewerOfPages viewerOfPages;
 
-    public DocumentView() {
+    public PerformerDialog(JFrame frame) {
+        super(frame, "Performers");
         MainFrame = new JFrame("PBZ2");
         MainFrame.setLayout(new BorderLayout(5, 5));
         MainFrame.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 600,
                 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 400,
                 1200, 800);
 
+        viewerOfPages = new ViewerOfPages();
         addStudentDialog = new AddStudentDialog(MainFrame);
         searchStudentsDialog = new SearchStudentsDialog(MainFrame);
         deleteStudentsDialog = new DeleteStudentsDialog(MainFrame);
@@ -54,6 +57,10 @@ public class DocumentView {
         return searchStudentsDialog;
     }
 
+    public ViewerOfPages getViewerOfPages() {
+        return viewerOfPages;
+    }
+
     public JFrame getMainFrame() {
         return MainFrame;
     }
@@ -72,19 +79,19 @@ public class DocumentView {
         JToolBar jToolBar = new JToolBar();
         jToolBar.setOrientation(SwingConstants.VERTICAL);
 
-        saveJButton = new MyButton(Paths.get("Pictures//save.png").toFile());
-        loadJButton = new MyButton(Paths.get("Pictures//load.png").toFile());
-        JButton editJButton = new MyButton(Paths.get("Pictures//edit.png").toFile());
+        saveJButton = new CustomButton(Paths.get("Pictures//save.png").toFile());
+        loadJButton = new CustomButton(Paths.get("Pictures//load.png").toFile());
+        JButton editJButton = new CustomButton(Paths.get("Pictures//edit.png").toFile());
         editJButton.addActionListener(e -> {
             addStudentDialog.setCustomDialogLocation();
             addStudentDialog.setVisible(true);
         });
-        JButton deleteNoteJButton = new MyButton(Paths.get("Pictures//delete-note.png").toFile());
+        JButton deleteNoteJButton = new CustomButton(Paths.get("Pictures//delete-note.png").toFile());
         deleteNoteJButton.addActionListener(e -> {
             deleteStudentsDialog.setCustomDialogLocation();
             deleteStudentsDialog.setVisible(true);
         });
-        JButton searchJButton = new MyButton(Paths.get("Pictures//search.png").toFile());
+        JButton searchJButton = new CustomButton(Paths.get("Pictures//search.png").toFile());
         searchJButton.addActionListener(e -> {
             searchStudentsDialog.setCustomDialogLocation();
             searchStudentsDialog.setVisible(true);

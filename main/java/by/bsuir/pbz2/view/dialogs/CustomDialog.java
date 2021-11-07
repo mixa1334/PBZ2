@@ -1,8 +1,6 @@
 package by.bsuir.pbz2.view.dialogs;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class CustomDialog extends JDialog {
     private final JFrame jFrame;
