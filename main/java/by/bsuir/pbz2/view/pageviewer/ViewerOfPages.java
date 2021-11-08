@@ -52,7 +52,14 @@ public abstract class ViewerOfPages<T> extends JPanel {
         add(upPanel, BorderLayout.NORTH);
         setPreferredSize(new Dimension(1000, 600));
 
+        entity = new ArrayList<>();
+
         initActions();
+        resetPageView();
+    }
+
+    public void addEntityToDisplay(T entity) {
+        this.entity.add(entity);
         resetPageView();
     }
 
