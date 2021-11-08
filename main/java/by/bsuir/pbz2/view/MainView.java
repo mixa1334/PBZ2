@@ -1,31 +1,27 @@
 package by.bsuir.pbz2.view;
 
-import by.bsuir.pbz2.view.buttons.CustomButton;
+import by.bsuir.pbz2.view.button.CustomButton;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainView {
-    private final JFrame MainFrame;
-
+public class MainView extends JFrame {
     private final DocumentWindow documentWindow;
     private final PerformerWindow performerWindow;
 
     public MainView() {
-        MainFrame = new JFrame("PBZ2");
-        MainFrame.setLayout(new BorderLayout(5, 5));
-        MainFrame.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 600,
+        super("PBZ2");
+        setLayout(new BorderLayout(5, 5));
+        setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 600,
                 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 400,
                 500, 200);
 
-        documentWindow = new DocumentWindow(MainFrame);
+        documentWindow = new DocumentWindow(this);
         performerWindow = new PerformerWindow();
 
         initButtons();
 
-        MainFrame.setVisible(true);
-
-        MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public DocumentWindow getDocumentWindow() {
@@ -34,10 +30,6 @@ public class MainView {
 
     public PerformerWindow getPerformerWindow() {
         return performerWindow;
-    }
-
-    public JFrame getMainFrame() {
-        return MainFrame;
     }
 
     private void initButtons() {
@@ -56,6 +48,6 @@ public class MainView {
         panel.add(documentButton);
         panel.add(performerButton);
 
-        MainFrame.add(panel, BorderLayout.CENTER);
+        add(panel, BorderLayout.CENTER);
     }
 }

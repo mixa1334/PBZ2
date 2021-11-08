@@ -1,4 +1,4 @@
-package by.bsuir.pbz2.view.buttons;
+package by.bsuir.pbz2.view.button;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,15 +1,17 @@
 package by.bsuir.pbz2.view;
 
-import by.bsuir.pbz2.view.buttons.CustomButton;
+import by.bsuir.pbz2.view.button.CustomButton;
 import by.bsuir.pbz2.view.dialogs.performer.AddEditPerformerDialog;
 import by.bsuir.pbz2.view.dialogs.performer.DeletePerformerDialog;
 import by.bsuir.pbz2.view.pageviewer.PerformerViewer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.nio.file.Paths;
 
 public class PerformerWindow extends JFrame {
+    private final CustomButton updatePerformersJButton;
 
     private final AddEditPerformerDialog addPerformerDialog;
     private final DeletePerformerDialog deletePerformerDialog;
@@ -20,6 +22,8 @@ public class PerformerWindow extends JFrame {
         super("Performers");
         setLayout(new BorderLayout(5, 5));
         positionLocSet();
+
+        updatePerformersJButton = new CustomButton(Paths.get("src//main//resources//pictures//update.png").toFile());
 
         performerViewer = new PerformerViewer();
         addPerformerDialog = new AddEditPerformerDialog(this, "Add performer");
@@ -45,6 +49,10 @@ public class PerformerWindow extends JFrame {
         return performerViewer;
     }
 
+    public void setActionToUpdateButton(ActionListener action) {
+        updatePerformersJButton.addActionListener(action);
+    }
+
     public void positionLocSet() {
         setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 600,
                 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 400,
@@ -57,18 +65,18 @@ public class PerformerWindow extends JFrame {
 
         JButton editJButton = new CustomButton(Paths.get("src//main//resources//pictures//edit.png").toFile());
         editJButton.addActionListener(e -> {
-            addPerformerDialog.setCustomDialogLocation();
-            addPerformerDialog.setVisible(true);
+            editPerformerDialog.setCustomDialogLocation();
+            editPerformerDialog.setVisible(true);
         });
         JButton deleteNoteJButton = new CustomButton(Paths.get("src//main//resources//pictures//delete-note.png").toFile());
         deleteNoteJButton.addActionListener(e -> {
             deletePerformerDialog.setCustomDialogLocation();
             deletePerformerDialog.setVisible(true);
         });
-        JButton searchJButton = new CustomButton(Paths.get("src//main//resources//pictures//create-note.png").toFile());
-        searchJButton.addActionListener(e -> {
-            editPerformerDialog.setCustomDialogLocation();
-            editPerformerDialog.setVisible(true);
+        JButton createJButton = new CustomButton(Paths.get("src//main//resources//pictures//create-note.png").toFile());
+        createJButton.addActionListener(e -> {
+            addPerformerDialog.setCustomDialogLocation();
+            addPerformerDialog.setVisible(true);
         });
 
 
@@ -76,7 +84,9 @@ public class PerformerWindow extends JFrame {
         jToolBar.addSeparator();
         jToolBar.add(deleteNoteJButton);
         jToolBar.addSeparator();
-        jToolBar.add(searchJButton);
+        jToolBar.add(createJButton);
+        jToolBar.addSeparator();
+        jToolBar.add(updatePerformersJButton);
 
         add(jToolBar, BorderLayout.WEST);
     }

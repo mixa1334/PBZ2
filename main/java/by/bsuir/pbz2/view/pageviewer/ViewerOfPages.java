@@ -1,6 +1,6 @@
 package by.bsuir.pbz2.view.pageviewer;
 
-import by.bsuir.pbz2.view.buttons.CustomButton;
+import by.bsuir.pbz2.view.button.CustomButton;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -60,6 +60,11 @@ public abstract class ViewerOfPages<T> extends JPanel {
 
     public void addEntityToDisplay(T entity) {
         this.entity.add(entity);
+        resetPageView();
+    }
+
+    public void deleteEntityFromDisplay(T entity) {
+        this.entity.remove(entity);
         resetPageView();
     }
 

@@ -1,6 +1,6 @@
 package by.bsuir.pbz2.view.dialogs.performer;
 
-import by.bsuir.pbz2.view.buttons.CustomButton;
+import by.bsuir.pbz2.view.button.CustomButton;
 import by.bsuir.pbz2.view.dialogs.CustomDialog;
 
 import javax.swing.*;
