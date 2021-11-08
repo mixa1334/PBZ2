@@ -1,8 +1,8 @@
 package by.bsuir.pbz2.view.pageviewer;
 
-import by.bsuir.pbz2.entity.Document;
+import by.bsuir.pbz2.model.entity.Document;
 
-import static by.bsuir.pbz2.entity.sqlcolumn.SQLEntityColumn.*;
+import static by.bsuir.pbz2.model.entity.sqlcolumn.SQLEntityColumn.*;
 
 public class DocumentViewer extends ViewerOfPages<Document> {
     public DocumentViewer() {
