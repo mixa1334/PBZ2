@@ -20,7 +20,7 @@ public class DocumentViewer extends ViewerOfPages<Document> {
                 document.getDateOfCreation(),
                 document.getContent(),
                 document.getEvent(),
-                document.getPerformer().getFio(),
+                document.getPerformer().getPerformerId(),
                 document.getDateOfCompletion(),
                 document.getStatus()
         };

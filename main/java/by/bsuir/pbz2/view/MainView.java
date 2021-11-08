@@ -16,7 +16,7 @@ public class MainView extends JFrame {
                 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 400,
                 500, 200);
 
-        documentWindow = new DocumentWindow(this);
+        documentWindow = new DocumentWindow();
         performerWindow = new PerformerWindow();
 
         initButtons();
@@ -36,8 +36,8 @@ public class MainView extends JFrame {
         JButton documentButton = new CustomButton("Documents");
         JButton performerButton = new CustomButton("Performers");
         documentButton.addActionListener(e -> {
-            //documentDialog.;
-            //documentWindow.setVisible(true);
+            documentWindow.positionLocSet();
+            documentWindow.setVisible(true);
         });
         performerButton.addActionListener(e -> {
             performerWindow.positionLocSet();

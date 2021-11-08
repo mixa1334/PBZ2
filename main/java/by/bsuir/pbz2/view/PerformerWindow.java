@@ -2,7 +2,7 @@ package by.bsuir.pbz2.view;
 
 import by.bsuir.pbz2.view.button.CustomButton;
 import by.bsuir.pbz2.view.dialogs.performer.AddEditPerformerDialog;
-import by.bsuir.pbz2.view.dialogs.performer.DeletePerformerDialog;
+import by.bsuir.pbz2.view.dialogs.DeleteEntityDialog;
 import by.bsuir.pbz2.view.pageviewer.PerformerViewer;
 
 import javax.swing.*;
@@ -14,7 +14,7 @@ public class PerformerWindow extends JFrame {
     private final CustomButton updatePerformersJButton;
 
     private final AddEditPerformerDialog addPerformerDialog;
-    private final DeletePerformerDialog deletePerformerDialog;
+    private final DeleteEntityDialog deletePerformerDialog;
     private final AddEditPerformerDialog editPerformerDialog;
     private final PerformerViewer performerViewer;
 
@@ -27,7 +27,7 @@ public class PerformerWindow extends JFrame {
 
         performerViewer = new PerformerViewer();
         addPerformerDialog = new AddEditPerformerDialog(this, "Add performer");
-        deletePerformerDialog = new DeletePerformerDialog(this);
+        deletePerformerDialog = new DeleteEntityDialog(this, "Delete performer");
         editPerformerDialog = new AddEditPerformerDialog(this, "Edit performer");
         add(performerViewer, BorderLayout.CENTER);
         setJToolBar();
@@ -37,7 +37,7 @@ public class PerformerWindow extends JFrame {
         return addPerformerDialog;
     }
 
-    public DeletePerformerDialog getDeletePerformerDialog() {
+    public DeleteEntityDialog getDeletePerformerDialog() {
         return deletePerformerDialog;
     }
 

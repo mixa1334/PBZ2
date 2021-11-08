@@ -46,11 +46,11 @@ public class DocumentRepository extends AbstractRepository<Document> {
                 document.setDocumentId(resultSet.getInt(SQLEntityColumn.DOCUMENT_ID.toString()));
                 document.setTypeOfDocument(resultSet.getString(SQLEntityColumn.TYPE.toString()));
                 Date dateOfCreation = resultSet.getDate(SQLEntityColumn.DATE_OF_CREATION.toString());
-                document.setDateOfCreation(LocalDate.parse(dateOfCreation.toString()));
+                document.setDateOfCreation(dateOfCreation);
                 document.setContent(resultSet.getString(SQLEntityColumn.CONTENT.toString()));
                 document.setEvent(resultSet.getString(SQLEntityColumn.EVENT.toString()));
                 Date dateOfCompletion = resultSet.getDate(SQLEntityColumn.DATE_OF_COMPLETION.toString());
-                document.setDateOfCompletion(LocalDate.parse(dateOfCompletion.toString()));
+                document.setDateOfCompletion(dateOfCompletion);
                 document.setStatus(resultSet.getBoolean(SQLEntityColumn.STATUS.toString()));
 
                 Performer performer = new Performer();
@@ -96,11 +96,11 @@ public class DocumentRepository extends AbstractRepository<Document> {
             logger.log(Level.INFO, "document to create -> " + document);
             statement.setInt(1, document.getDocumentId());
             statement.setString(2, document.getTypeOfDocument());
-            statement.setDate(3, Date.valueOf(document.getDateOfCreation()));
+            statement.setDate(3, document.getDateOfCreation());
             statement.setString(4, document.getContent());
             statement.setString(5, document.getEvent());
             statement.setInt(6, document.getPerformer().getPerformerId());
-            statement.setDate(7, Date.valueOf(document.getDateOfCompletion()));
+            statement.setDate(7, document.getDateOfCompletion());
             statement.setBoolean(8, document.getStatus());
             int result = statement.executeUpdate();
             logger.log(Level.INFO, "status after inserting -> " + result);
@@ -118,11 +118,11 @@ public class DocumentRepository extends AbstractRepository<Document> {
              PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_DOCUMENT)) {
             logger.log(Level.INFO, "document to update -> " + document);
             statement.setString(1, document.getTypeOfDocument());
-            statement.setDate(2, Date.valueOf(document.getDateOfCreation()));
+            statement.setDate(2, document.getDateOfCreation());
             statement.setString(3, document.getContent());
             statement.setString(4, document.getEvent());
             statement.setInt(5, document.getPerformer().getPerformerId());
-            statement.setDate(6, Date.valueOf(document.getDateOfCompletion()));
+            statement.setDate(6, document.getDateOfCompletion());
             statement.setBoolean(7, document.getStatus());
             statement.setInt(8, document.getDocumentId());
             int result = statement.executeUpdate();

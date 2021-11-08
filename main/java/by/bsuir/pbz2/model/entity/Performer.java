@@ -60,7 +60,7 @@ public class Performer extends AbstractEntity {
 
     @Override
     public int hashCode() {
-        int result = (int) (performerId ^ (performerId >>> 32));
+        int result = (int) (0);
         result = 31 * result + (position != null ? position.hashCode() : 0);
         result = 31 * result + (subdivision != null ? subdivision.hashCode() : 0);
         result = 31 * result + (fio != null ? fio.hashCode() : 0);

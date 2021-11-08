@@ -8,6 +8,7 @@ import by.bsuir.pbz2.model.repository.specification.RepositorySpecification;
 import by.bsuir.pbz2.model.repository.specification.document.ByDocumentTypeSortedByDate;
 import org.testng.annotations.Test;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import static org.testng.Assert.*;
@@ -39,13 +40,13 @@ public class DocumentRepositoryTest {
         document.setDocumentId(111);
         type = "отказ";
         document.setTypeOfDocument(type);
-        document.setDateOfCreation(LocalDate.now());
+        document.setDateOfCreation(Date.valueOf(LocalDate.now()));
         document.setContent("Второй этап стройтильства ТЦ");
         document.setEvent("Закупка метариала");
         Performer performer = new Performer();
         performer.setPerformerId(1);
         document.setPerformer(performer);
-        document.setDateOfCompletion(LocalDate.of(2023, 9, 11));
+        document.setDateOfCompletion(Date.valueOf(LocalDate.of(2023, 9, 11)));
         document.setStatus(false);
 
         boolean actual = repository.createEntity(document);

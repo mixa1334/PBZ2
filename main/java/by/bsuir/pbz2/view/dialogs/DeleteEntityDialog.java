@@ -1,21 +1,20 @@
-package by.bsuir.pbz2.view.dialogs.performer;
+package by.bsuir.pbz2.view.dialogs;
 
 import by.bsuir.pbz2.view.button.CustomButton;
-import by.bsuir.pbz2.view.dialogs.CustomDialog;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class DeletePerformerDialog extends CustomDialog {
+public class DeleteEntityDialog extends CustomDialog {
     private final JButton performerJButton;
     private final JTextField idJTextField;
 
-    public DeletePerformerDialog(JFrame frame) {
-        super(frame, "Delete performer");
+    public DeleteEntityDialog(JFrame frame, String text) {
+        super(frame, text);
 
         JPanel jPanel = new JPanel(new GridLayout(1, 2, 10, 5));
-        performerJButton = new CustomButton("Delete performer");
+        performerJButton = new CustomButton(text);
         jPanel.add(new JLabel("Id"));
         jPanel.add(idJTextField = new JTextField());
 

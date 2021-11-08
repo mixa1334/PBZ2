@@ -1,17 +1,17 @@
 package by.bsuir.pbz2.model.entity;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.Objects;
 import java.util.StringJoiner;
 
 public class Document extends AbstractEntity {
     private int documentId;
     private String typeOfDocument;
-    private LocalDate dateOfCreation;
+    private Date dateOfCreation;
     private String content;
     private String event;
     private Performer performer;
-    private LocalDate dateOfCompletion;
+    private Date dateOfCompletion;
     private Boolean status;
 
     public Document() {
@@ -33,11 +33,11 @@ public class Document extends AbstractEntity {
         this.typeOfDocument = typeOfDocument;
     }
 
-    public LocalDate getDateOfCreation() {
+    public Date getDateOfCreation() {
         return dateOfCreation;
     }
 
-    public void setDateOfCreation(LocalDate dateOfCreation) {
+    public void setDateOfCreation(Date dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 
@@ -65,11 +65,11 @@ public class Document extends AbstractEntity {
         this.performer = performer;
     }
 
-    public LocalDate getDateOfCompletion() {
+    public Date getDateOfCompletion() {
         return dateOfCompletion;
     }
 
-    public void setDateOfCompletion(LocalDate dateOfCompletion) {
+    public void setDateOfCompletion(Date dateOfCompletion) {
         this.dateOfCompletion = dateOfCompletion;
     }
 
@@ -103,7 +103,7 @@ public class Document extends AbstractEntity {
 
     @Override
     public int hashCode() {
-        int result = (int) (documentId ^ (documentId >>> 32));
+        int result = (int) (0);
         result = 31 * result + (typeOfDocument != null ? typeOfDocument.hashCode() : 0);
         result = 31 * result + (dateOfCreation != null ? dateOfCreation.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
