@@ -28,6 +28,10 @@ public class PerformerController {
         updateData(false);
     }
 
+    public Map<Integer, Performer> getPerformerMap() {
+        return performerMap;
+    }
+
     private void updateData(boolean showMsg) {
         try {
             List<Performer> performersFromDb = repository.findEntity(new AllPerformers());
