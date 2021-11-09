@@ -84,7 +84,7 @@ public class AddEditDocumentDialog extends CustomDialog {
     private JDatePickerImpl createDatePicker() {
         UtilDateModel model = new UtilDateModel();
         LocalDate date = LocalDate.now();
-        model.setDate(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+        model.setDate(date.getYear(), date.getMonthValue() - 1, date.getDayOfMonth());
         model.setSelected(true);
         JDatePanelImpl datePanel = new JDatePanelImpl(model);
         return new JDatePickerImpl(datePanel);

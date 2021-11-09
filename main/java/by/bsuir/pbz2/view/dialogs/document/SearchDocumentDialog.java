@@ -12,15 +12,14 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchDocumentDialog extends CustomDialog implements ItemListener {
-    public final String BY_DOCUMENT_TYPE_CRITERIA = "by document type";
-    public final String BY_UNCOMPLETED_EVENTS_FOR_PERIOD = "by uncompleted events";
-    public final String BY_EVENT_PERIOD = "events by period";
+    public static final String BY_DOCUMENT_TYPE_CRITERIA = "by document type";
+    public static final String BY_UNCOMPLETED_EVENTS_FOR_PERIOD = "by uncompleted events";
+    public static final String BY_EVENT_PERIOD = "events by period";
     private final JComboBox<String> criteriaJComboBox;
     private JPanel cardLayoutInput;
     private JPanel cardLayoutView;
@@ -85,16 +84,16 @@ public class SearchDocumentDialog extends CustomDialog implements ItemListener {
         return (String) criteriaJComboBox.getSelectedItem();
     }
 
-    public Date getLowerDateLimitFromUser() {
-        return (Date) lowerLimitDate.getModel().getValue();
+    public Object getLowerDateLimitFromUser() {
+        return lowerLimitDate.getModel().getValue();
     }
 
-    public Date getUpperDateLimitFromUser() {
-        return (Date) upperLimitDate.getModel().getValue();
+    public Object getUpperDateLimitFromUser() {
+        return upperLimitDate.getModel().getValue();
     }
 
-    public Date getDateLimitFromUser() {
-        return (Date) limitDate.getModel().getValue();
+    public Object getDateLimitFromUser() {
+        return limitDate.getModel().getValue();
     }
 
     public String getDocumentTypeFromUser() {
@@ -104,7 +103,7 @@ public class SearchDocumentDialog extends CustomDialog implements ItemListener {
     private JDatePickerImpl createDatePicker() {
         UtilDateModel model = new UtilDateModel();
         LocalDate date = LocalDate.now();
-        model.setDate(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+        model.setDate(date.getYear(), date.getMonthValue() - 1, date.getDayOfMonth());
         model.setSelected(true);
         JDatePanelImpl datePanel = new JDatePanelImpl(model);
         return new JDatePickerImpl(datePanel);

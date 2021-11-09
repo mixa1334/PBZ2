@@ -32,6 +32,6 @@ public class ByEventForPeriod implements RepositorySpecification {
 
     @Override
     public String getSQLClauses() {
-        return String.format("WHERE %s BETWEEN \"%s\" ADN \"%s\"", SQLEntityColumn.DATE_OF_COMPLETION, lowerLimit, upperLimit);
+        return String.format("WHERE %s BETWEEN \"%s\" AND \"%s\"", SQLEntityColumn.DATE_OF_COMPLETION, lowerLimit, upperLimit);
     }
 }
