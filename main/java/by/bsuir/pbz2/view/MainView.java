@@ -12,8 +12,8 @@ public class MainView extends JFrame {
     public MainView() {
         super("PBZ2");
         setLayout(new BorderLayout(5, 5));
-        setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 600,
-                Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 400,
+        setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 250,
+                Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 100,
                 500, 200);
 
         documentWindow = new DocumentWindow();

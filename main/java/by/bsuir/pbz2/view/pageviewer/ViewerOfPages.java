@@ -96,7 +96,7 @@ public abstract class ViewerOfPages<T> extends JPanel {
         });
     }
 
-    abstract Object[] fieldsToDisplay(T t);
+    public abstract Object[] fieldsToDisplay(T t);
 
     private void initActions() {
         nextPageButton.addActionListener(e -> {

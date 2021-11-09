@@ -13,7 +13,7 @@ public class DocumentViewer extends ViewerOfPages<Document> {
     }
 
     @Override
-    Object[] fieldsToDisplay(Document document) {
+    public Object[] fieldsToDisplay(Document document) {
         return new Object[]{
                 document.getDocumentId(),
                 document.getTypeOfDocument(),

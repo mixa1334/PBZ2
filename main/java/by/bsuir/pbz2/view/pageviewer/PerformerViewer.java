@@ -11,7 +11,7 @@ public class PerformerViewer extends ViewerOfPages<Performer> {
     }
 
     @Override
-    Object[] fieldsToDisplay(Performer performer) {
+    public Object[] fieldsToDisplay(Performer performer) {
         return new Object[]{
                 performer.getPerformerId(),
                 performer.getPosition(),
